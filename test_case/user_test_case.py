@@ -1,10 +1,9 @@
 import unittest
-from datetime import datetime
 
 import requests
-from BeautifulReport import BeautifulReport as br
 
 from config import config_util as cu
+from config.log_util import globalLogger as logger
 
 
 class TestUser(unittest.TestCase):
@@ -24,8 +23,8 @@ class TestUser(unittest.TestCase):
         r = requests.post(self.base_url + '/users/register', headers={'Content-Type': 'application/json;charset=UTF-8'},
                           data=cu.get_options('user_register', 'data').encode('utf-8'))
         result = r.json()
+        logger.debug('返回数据：%s' % result)
         self.assertEqual(result['code'], 0, result['msg'])
-
 
 # suite = unittest.TestSuite()  # 定义一个测试集合
 # suite.addTest(unittest.makeSuite(TestUser))  # 把写的用例加进来（将TestUser类）加进来
