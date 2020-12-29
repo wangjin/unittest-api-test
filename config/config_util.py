@@ -9,8 +9,7 @@ def get_options(section, key):
     :param section: 需要读取的区域
     :return: 对应配置
     """
-    # file = os.path.abspath(os.path.join(os.getcwd(), '..', 'config', 'config.ini'))
-    file = 'config/config.ini'
+    file = os.path.abspath(os.path.join(os.getcwd(), '..', 'config', 'config.ini'))
     cp = ConfigParser()
     cp.read(file, encoding='utf-8')
     return cp.get(section, key)
